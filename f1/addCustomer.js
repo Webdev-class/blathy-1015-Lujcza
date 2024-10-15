@@ -11,15 +11,29 @@ let customers = [
     {id:10, name:"Jonas Tungate", age:83, address:{city:"Padangulaktanding", street:"224 Manley Drive", house:49}, newsLetter: true}
 ]
 
+
 function isAddress(address) {
-    //TODO
+    return typeof address.city == 'string' && typeof address.street == 'string' && typeof address.house == 'number';
 }
 
 function isCustomer(name, age, address, newsLetter) {
-    //TODO
+    return typeof name == 'string' && typeof age == 'number' && typeof newsLetter == 'boolean' && isAddress(address);
 }
 
 function addCustomer(name, age, address, newsLetter) {
-    //TODO
+    if(!isCustomer(name,age,address,newsLetter)){
+        return false;
+    }
+    let customer = {
+        id: customers.length + 1,
+        name: name,
+        age: age,
+        address: address,
+        newsLetter: newsLetter
+    }
+    c2 = customers.slice();
+    c2.push(customer);
+    return c2;
+    
 }
 module.exports = addCustomer;

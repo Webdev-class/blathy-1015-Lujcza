@@ -10,15 +10,25 @@ let customers = [
     {id:9, name:"Ashlie Wozencraft", age:23, address:{city:"Espinosa", street:"78 Pepper Wood Terrace", house:11}, newsLetter: false},
     {id:10, name:"Jonas Tungate", age:83, address:{city:"Padangulaktanding", street:"224 Manley Drive", house:49}, newsLetter: true}
 ]
-function isAddress(address) {    
-    //TODO
+function isAddress(address) {  
+    return typeof address.city == 'string' && typeof address.street == 'string' && typeof address.house == 'number';  
 }
 
-function isCustomer(name, age, address, newsLetter) {    
-    //TODO
+function isCustomer(customer) {    
+    return typeof customer.name == 'string' && typeof customer.age == 'number' && typeof customer.newsLetter == 'boolean' && isAddress(customer.address);
 }
 function modifyCustomer (customer){
-    //TODO
+    if(!isCustomer(customer)){
+        return false;
+    }
+    let index = customers.findIndex(elem => { return elem.id == customer.id;})
+    if(index == -1){
+        return false;
+    }
+    c2 = customers.slice();
+    c2[index] = customer;
+    return c2;
+
 }
 
 module.exports = modifyCustomer;

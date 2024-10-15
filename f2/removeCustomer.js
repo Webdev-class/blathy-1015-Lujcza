@@ -12,6 +12,12 @@ let customers = [
 ]
 
 function removeCustomer(id) {
-    //TODO
+    index = customers.findIndex(elem => { return elem.id == id;})
+    if(index == -1){
+        return false;
+    }
+    c2 = customers.slice();
+    c2.splice(index,1);
+    return c2;
 }
 module.exports = removeCustomer;
